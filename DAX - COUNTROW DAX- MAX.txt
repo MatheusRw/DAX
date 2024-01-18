@@ -1,0 +1,39 @@
+Teste count = COUNTROWS(SUMMARIZE('Charger Report','Charger Report'[IMSI],'Charger Report'[PRODUCT_OFFERING_ID],'Charger Report'[OPERATION],'Charger Report'[AMOUNT]))
+
+
+
+MAX DATA 
+
+Faturamento Medio_2 = 
+var current_month = month(TODAY())
+var max_mes = CALCULATE(MAX('2021-2022'[Data]),FILTER(d_Calendario,MONTH(d_Calendario[Date])<= current_month))
+
+
+********************* para o correto total usar o valor da coluna de mes da d_calendario******** 
+
+VAR max_month = MAX(d_Calendario[Mes])
+RETURN
+CALCULATE([diferenca_2], FILTER(d_Calendario, d_Calendario[Mes]= max_month))
+
+
+
+
+diferenca_3 = 
+VAR max_month = MONTH(TODAY())
+var current_year = YEAR(TODAY())
+RETURN
+CALCULATE([diferenca_2], FILTER(d_Calendario, month(d_Calendario[Date])= max_month && YEAR(d_Calendario[Date])= current_year))
+
+
+*************************** contar os valores de uma medida ************************************************************** 
+
+Teste Ratio_3 = 
+CALCULATE(COUNTROWS(FILTER(DISTINCT('Base Teum'[MSISDN]),[Ratio_3]>2)),'Base Teum'[Status_da_oferta]="ativo",'Base Teum'[STATUSID] in {1,11})
+
+
+
+
+************************** teste max data acumulado V2 USAR ESSA *******************************************************************************************
+
+
+TESTE_BKP_2 = MAXX(BASE_BACKUP,CALCULATE([TESTE_BKP],BASE_BACKUP[Data_Mes]=MAX(BASE_BACKUP[Data_Mes])))

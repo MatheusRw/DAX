@@ -1,0 +1,4 @@
+TESTEE = var current_month= MONTH(today())
+var consumo =  CALCULATE(sum(CDR_P4[soma])/POWER(1024,3),CDR_P4[subservicetypename]="Mobile Data",FILTER(d_Calendario,MONTH(d_Calendario[Date])=current_month-1))
+return
+DIVIDE(consumo,CALCULATE([Acumuado Base teum],FILTER(d_Calendario,month(d_Calendario[Date])=current_month-1)))
