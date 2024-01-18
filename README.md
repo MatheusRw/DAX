@@ -1,0 +1,1 @@
+Medidas com conhecimentos uteis 
