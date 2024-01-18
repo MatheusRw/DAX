@@ -1,0 +1,2 @@
+BOU PRODUTO = 
+DIVIDE(sumx(FILTER(VALUES('Base Teum'[IMSI]),[qtd_promotion]=1),CALCULATE(SUM(CDR[soma])/POWER(1024,3),CDR[subservicetypename]="Mobile Data")),[qtd_promotion]) +0
